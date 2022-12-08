@@ -1,10 +1,29 @@
-
+import {useRef, useEffect} from "react"
 
 function App() {
+
+  const ref = useRef()
+
+  useEffect(() => {
+    let images = ref.current.querySelectorAll('img'),
+      total = images.lenght,
+      current = 0
+    setInterval(() => {
+      images[current].classList.remove('opacity-0')
+      if (current === total - 1) {
+        current = 0
+      } else {
+        current += 1
+      }
+    }, 2000)
+  
+  }, [ref])
+  
+
   return (
     <div className="h-full w-full flex  items-center justify-center">
       <div className="w-[380px] h-[581px] bg-logo-pattern relative bg-[lenght:468.32px ,634.15px] bg-[top_left_-46px]">
-        <div className="w-[250px] h-[538px] absolute top-[27px] right-[18px]">
+        <div className="w-[250px] h-[538px] absolute top-[27px] right-[18px]" ref={ref}>
           <img
             className="w-full h-full absolute top-0 left-0 opacity-0 transition-opacity"
             src="https://www.instagram.com/static/images/homepage/screenshots/screenshot1-2x.png/cfd999368de3.png"
