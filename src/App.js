@@ -60,19 +60,47 @@ function App() {
         </div>
       </div>
 
-      <div className="w-[350px] bg-white border px-[50px] pt-8 pb-2">
-        <a href="#" className="flex justify-center">
+      <div className="w-[350px] bg-white border px-[40px] pt-10 pb-2">
+        <a href="#" className="flex justify-center mb-8">
           <img
             className="h-[51px]"
             src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
             alt=""
           />
         </a>
-        <form>
+        <form className="grid gap-y-1.5">
           <label className="block relative">
-            <input type="text" required={true} className="bg-zinc-50 border px-2 rounded-sm outline-none text-xs focus:border-gray-400 w-full h-[38px] valid:pt-[10px] peer" />
-            <small className="absolute top-1/2 left-[9px] cursor-text pointer-events-none text-xs text-gray-500 -translate-y-1/2 transition-all peer-valid:text-[10px] peer-valid:top-2.5">Phone Number, username or email</small>
+            <input
+              type="text"
+              required={true}
+              className="bg-zinc-50 border px-2 rounded-sm outline-none text-xs focus:border-gray-400 w-full h-[38px] valid:pt-[10px] peer"
+            />
+            <small className="absolute top-1/2 left-[9px] cursor-text pointer-events-none text-xs text-gray-500 -translate-y-1/2 transition-all peer-valid:text-[10px] peer-valid:top-2.5">
+              Phone Number, username or email
+            </small>
           </label>
+          <label className="block relative">
+            <input
+              type="password"
+              required={true}
+              className="bg-zinc-50 border px-2 rounded-sm outline-none text-xs focus:border-gray-400 w-full h-[38px] valid:pt-[10px] peer"
+            />
+            <small className="absolute top-1/2 left-[9px] cursor-text pointer-events-none text-xs text-gray-500 -translate-y-1/2 transition-all peer-valid:text-[10px] peer-valid:top-2.5">
+              Password
+            </small>
+          </label>
+          <button
+            type="submit"
+            disabled={true}
+            className="h-[30px] rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
+          >
+            Log In
+          </button>
+          <div className="flex items-center">
+            <div className="h-px bg-gray-300 flex-1" />
+            <span className="px-4 text-[13px] font-semibold">OR</span>
+            <div className="h-px bg-gray-300 flex-1" />
+          </div>
         </form>
       </div>
     </div>
