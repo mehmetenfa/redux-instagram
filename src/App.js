@@ -22,6 +22,8 @@ function App() {
         current += 1;
       }
     }
+
+    imageSlider()
     let interval = setInterval(imageSlider, 3000);
     return () => {
       clearInterval(interval)
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <div className="h-full w-full flex  items-center justify-center">
+
       <div className="w-[380px] h-[581px] bg-logo-pattern relative bg-[lenght:468.32px ,634.15px] bg-[top_left_-46px]">
         <div
           className="w-[250px] h-[538px] absolute top-[27px] right-[18px]"
@@ -57,6 +60,13 @@ function App() {
           />
         </div>
       </div>
+
+      <div className="w-[350px bg-white border">
+        <img className="h-[51px]" src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png" alt="" />
+    
+      </div>
+
+
     </div>
   );
 }
