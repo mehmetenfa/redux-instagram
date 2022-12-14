@@ -1,8 +1,13 @@
 import { clear } from "@testing-library/user-event/dist/clear";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 
 function App() {
   const ref = useRef();
+  const [username, setUsername] = useState('')
+  const [password, setPassword] = useState('')
+
+ 
+  const enabled = username && password 
 
   useEffect(() => {
     let images = ref.current.querySelectorAll("img"),
@@ -72,6 +77,8 @@ function App() {
           <label className="block relative">
             <input
               type="text"
+              value={username}
+              onChange={e => setUsername(e.target.value)}
               required={true}
               className="bg-zinc-50 border px-2 rounded-sm outline-none text-xs focus:border-gray-400 w-full h-[38px] valid:pt-[10px] peer"
             />
@@ -82,6 +89,8 @@ function App() {
           <label className="block relative">
             <input
               type="password"
+              value={password}
+              onChange={e => setPassword(e.target.value)}
               required={true}
               className="bg-zinc-50 border px-2 rounded-sm outline-none text-xs focus:border-gray-400 w-full h-[38px] valid:pt-[10px] peer"
             />
@@ -91,14 +100,14 @@ function App() {
           </label>
           <button
             type="submit"
-            disabled={true}
+            disabled={!enabled}
             className="h-[30px] rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
           >
             Log In
           </button>
           <div className="flex items-center">
             <div className="h-px bg-gray-300 flex-1" />
-            <span className="px-4 text-[13px] font-semibold">OR</span>
+            <span className="px-4 text-[13px] text-gray-500 font-semibold">OR</span>
             <div className="h-px bg-gray-300 flex-1" />
           </div>
         </form>
