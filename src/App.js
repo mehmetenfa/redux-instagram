@@ -21,18 +21,17 @@ function App() {
       } else {
         current += 1;
       }
-    }
+    };
 
-    imageSlider()
+    imageSlider();
     let interval = setInterval(imageSlider, 3000);
     return () => {
-      clearInterval(interval)
-    }
+      clearInterval(interval);
+    };
   }, [ref]);
 
   return (
-    <div className="h-full w-full flex  items-center justify-center">
-
+    <div className="h-full w-full flex items-center gap-x-8 justify-center">
       <div className="w-[380px] h-[581px] bg-logo-pattern relative bg-[lenght:468.32px ,634.15px] bg-[top_left_-46px]">
         <div
           className="w-[250px] h-[538px] absolute top-[27px] right-[18px]"
@@ -61,12 +60,21 @@ function App() {
         </div>
       </div>
 
-      <div className="w-[350px bg-white border">
-        <img className="h-[51px]" src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png" alt="" />
-    
+      <div className="w-[350px] bg-white border px-[50px] pt-8 pb-2">
+        <a href="#" className="flex justify-center">
+          <img
+            className="h-[51px]"
+            src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
+            alt=""
+          />
+        </a>
+        <form>
+          <label className="block relative">
+            <input type="text" required={true} className="bg-zinc-50 border px-2 rounded-sm outline-none text-xs focus:border-gray-400 w-full h-[38px] valid:pt-[10px] peer" />
+            <small className="absolute top-1/2 left-[9px] cursor-text pointer-events-none text-xs text-gray-500 -translate-y-1/2 transition-all peer-valid:text-[10px] peer-valid:top-2.5">Phone Number, username or email</small>
+          </label>
+        </form>
       </div>
-
-
     </div>
   );
 }
