@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import Input from "./components/input";
+import {AiFillFacebook} from 'react-icons/ai'
 
 function App() {
   const ref = useRef();
@@ -99,6 +100,10 @@ function App() {
             </span>
             <div className="h-px bg-gray-300 flex-1" />
           </div>
+          <a href="#" className="flex justify-center items-center gap-x-2 text-sm font-semibold text-facebook">
+              <AiFillFacebook size={20} />
+              Log in with Facebook
+          </a>
         </form>
       </div>
     </div>
