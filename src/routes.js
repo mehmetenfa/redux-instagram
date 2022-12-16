@@ -1,6 +1,10 @@
+import Home from "./pages/Home";
+
 const routes = [
-    {
-        path: '/',
-        elemen:'',
-    }
-]
+  {
+    path: "/",
+    elemen: <Home />,
+  },
+];
+
+export default routes;
