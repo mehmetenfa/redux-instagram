@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import Input from "./components/input";
+import Input from "../components/input"
 import { AiFillFacebook } from "react-icons/ai";
 
 export default function Login() {
