@@ -1,14 +1,22 @@
+import AuthLayout from "pages/auth";
 import Home from "pages/Home";
 import Login from "pages/login";
 
 const routes = [
   {
-    path: "./",
-    elemen: <Home />,
+    path: "/",
+    element: <Home />,
+    auth: true
   },
   {
-    path: 'login',
-    element: <Login />
+    path: '/auth',
+    element: <AuthLayout />,
+    children: [
+      {
+        path: 'login',
+        element: <Login />
+      }
+    ]
   }
 ];
 
