@@ -1,3 +1,4 @@
+import PrivateRoute from "components/PrivateRoute";
 import AuthLayout from "pages/auth";
 import Home from "pages/Home";
 import Login from "pages/login";
@@ -18,6 +19,12 @@ const routes = [
       }
     ]
   }
-];
+]
+
+const authCheck = routes => routes.map(route => {
+  if (route?.auth) {
+    route.elemen = <PrivateRoute>{route.element}</PrivateRoute>
+  }
+})
 
 export default routes;
