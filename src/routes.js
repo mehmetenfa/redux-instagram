@@ -23,8 +23,14 @@ const routes = [
 
 const authCheck = routes => routes.map(route => {
   if (route?.auth) {
-    route.elemen = <PrivateRoute>{route.element}</PrivateRoute>
+    route.element = <PrivateRoute>{route.element}</PrivateRoute>
   }
+  if (route?.children) {
+    route.children = authCheck(route.children)
+  }
+
+  return route
+
 })
 
-export default routes;
+export default authCheck(routes);
