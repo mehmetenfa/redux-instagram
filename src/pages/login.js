@@ -4,6 +4,7 @@ import { AiFillFacebook } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { setUser } from "store/auth";
+import { login } from "firebase.js";
 
 export default function Login() {
 
