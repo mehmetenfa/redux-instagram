@@ -17,9 +17,9 @@ const auth = getAuth();
 
 export const login = async (email, password) => {
   try {
-    const response = await signInWithEmailAndPassword(login, email, password);
+    const response = await signInWithEmailAndPassword(auth, email, password);
     console.log(response.user);
   } catch (err) {
-    alert(err.message);
+    alert(err.code);
   }
 };

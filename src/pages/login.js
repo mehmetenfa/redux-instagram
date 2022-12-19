@@ -34,14 +34,13 @@ export default function Login() {
     };
   }, [ref]);
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
-    dispatch(setUser({
-      username
-    }))
-    navigate(location.state?.return_url || '/', {
-      replace:true
-    })
+    await login(username, password)
+    
+    // navigate(location.state?.return_url || '/', {
+    //   replace:true
+    // })
   }
 
   return (
