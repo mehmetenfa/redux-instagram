@@ -1,6 +1,11 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  onAuthStateChanged,
+  signInWithEmailAndPassword,
+} from "firebase/auth";
 import toast from "react-hot-toast";
+import { userHandle } from "utils";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -16,10 +21,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
 
+onAuthStateChanged(auth, (user) => {
+    userHandle(user || false);
+  
+});
+
 export const login = async (email, password) => {
   try {
     const response = await signInWithEmailAndPassword(auth, email, password);
-    console.log(response.user);
   } catch (err) {
     toast.error(err.code);
   }
