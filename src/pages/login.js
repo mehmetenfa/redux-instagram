@@ -8,7 +8,6 @@ import { login } from "firebase.js";
 
 export default function Login() {
 
-  const dispatch = useDispatch()
   const navigate = useNavigate()
   const location = useLocation()
   const ref = useRef();
@@ -37,10 +36,9 @@ export default function Login() {
   const handleSubmit = async e => {
     e.preventDefault()
     await login(username, password)
-    
-    // navigate(location.state?.return_url || '/', {
-    //   replace:true
-    // })
+    navigate(location.state?.return_url || '/', {
+      replace:true
+    })
   }
 
   return (

@@ -1,6 +1,6 @@
 import store from "store";
 import { setUser } from "store/auth";
 
-export default userHandle = (data) => {
+export const userHandle = (data) => {
   store.dispatch(setUser(data));
 };

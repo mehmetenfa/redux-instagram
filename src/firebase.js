@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import toast from "react-hot-toast";
-import { userHandle } from "utils";
+import { userHandle } from "./utils";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
