@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Search from "./Search";
 
 export default function Header() {
   return (
@@ -10,6 +11,12 @@ export default function Header() {
             src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
           />
         </Link>
+
+        <Search />
+
+        <nav>
+          <button>Logout</button>
+        </nav>
       </div>
     </header>
   );
