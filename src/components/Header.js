@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import Search from "./Search";
+import { logout } from "firebase.js";
 
 export default function Header() {
   return (
@@ -15,9 +16,9 @@ export default function Header() {
         <Search />
 
         <nav>
-          <button>Logout</button>
+          <button onClick={logout}>Logout</button>
         </nav>
       </div>
     </header>
-  );
+  );  
 }

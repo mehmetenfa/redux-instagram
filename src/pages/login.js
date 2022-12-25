@@ -1,20 +1,14 @@
 import { useRef, useEffect, useState } from "react";
-import Input from "../components/input"
+import Input from "../components/input";
 import { AiFillFacebook } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { setUser } from "store/auth";
 import { login } from "firebase.js";
+import { Formik, Form } from "formik";
 
 export default function Login() {
-
-  const navigate = useNavigate()
-  const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
   const ref = useRef();
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
-
-  const enabled = username && password;
 
   useEffect(() => {
     let images = ref.current.querySelectorAll("img"),
@@ -33,13 +27,12 @@ export default function Login() {
     };
   }, [ref]);
 
-  const handleSubmit = async e => {
-    e.preventDefault()
-    await login(username, password)
-    navigate(location.state?.return_url || '/', {
-      replace:true
-    })
-  }
+  const handleSubmit = async (values, actions) => {
+    await login(...values);
+    navigate(location.state?.return_url || "/", {
+      replace: true,
+    });
+  };
 
   return (
     <div className="h-full w-full flex flex-wrap overflow-auto items-center gap-x-8 justify-center">
@@ -80,47 +73,54 @@ export default function Login() {
               alt=""
             />
           </a>
-          <form onSubmit={handleSubmit} className="grid gap-y-1.5">
-            <Input
-              type="text"
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-              label="Phone Number, username or email"
-            />
-            <Input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              label="Password"
-            />
-            <button
-              type="submit"
-              disabled={!enabled}
-              className="h-[30px] mt-1 rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
-            >
-              Log In
-            </button>
-            <div className="flex items-center my-2.5 mb-3.5">
-              <div className="h-px bg-gray-300 flex-1" />
-              <span className="px-4 text-[13px] text-gray-500 font-semibold">
-                OR
-              </span>
-              <div className="h-px bg-gray-300 flex-1" />
-            </div>
-            <a
-              href="#"
-              className="flex justify-center mb-2.5 items-center gap-x-2 text-sm font-semibold text-facebook"
-            >
-              <AiFillFacebook size={20} />
-              Log in with Facebook
-            </a>
-            <a
-              href="#"
-              className="text-xs flex items-center justify-center text-link"
-            >
-              Forgot password?
-            </a>
-          </form>
+          <Formik
+            initialValues={{
+              username: "",
+              password: "",
+            }}
+            onSubmit={handleSubmit}
+          >
+            {({ isSubmitting, values }) => (
+              <Form className="grid gap-y-1.5">
+                <pre>{JSON.stringify(values, null, 2)}</pre>
+                <Input
+                  name="username"
+                  label="Phone Number, username or email"
+                />
+                <Input
+                  type="password"
+                  name="password"
+                  label="Password"
+                />
+                <button
+                  type="submit"
+                  className="h-[30px] mt-1 rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
+                >
+                  Log In
+                </button>
+                <div className="flex items-center my-2.5 mb-3.5">
+                  <div className="h-px bg-gray-300 flex-1" />
+                  <span className="px-4 text-[13px] text-gray-500 font-semibold">
+                    OR
+                  </span>
+                  <div className="h-px bg-gray-300 flex-1" />
+                </div>
+                <a
+                  href="#"
+                  className="flex justify-center mb-2.5 items-center gap-x-2 text-sm font-semibold text-facebook"
+                >
+                  <AiFillFacebook size={20} />
+                  Log in with Facebook
+                </a>
+                <a
+                  href="#"
+                  className="text-xs flex items-center justify-center text-link"
+                >
+                  Forgot password?
+                </a>
+              </Form>
+            )}
+          </Formik>
         </div>
 
         <div className="bg-white border p-4 text-sm text-center">

@@ -2,6 +2,7 @@ import { initializeApp } from "firebase/app";
 import {
   getAuth,
   onAuthStateChanged,
+  signOut,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import toast from "react-hot-toast";
@@ -33,3 +34,11 @@ export const login = async (email, password) => {
     toast.error(err.code);
   }
 };
+
+export const logout = async () => {
+  try {
+    await signOut(auth)
+  } catch (err) {
+    toast.error(err.code)
+  }
+}
