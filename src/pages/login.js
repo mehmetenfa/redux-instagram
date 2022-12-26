@@ -4,6 +4,7 @@ import { AiFillFacebook } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { login } from "firebase.js";
 import { Formik, Form } from "formik";
+import { LoginSchema } from "validation";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -28,7 +29,7 @@ export default function Login() {
   }, [ref]);
 
   const handleSubmit = async (values, actions) => {
-    await login(...values);
+    await login(values.username, values.password);
     navigate(location.state?.return_url || "/", {
       replace: true,
     });
@@ -74,15 +75,15 @@ export default function Login() {
             />
           </a>
           <Formik
+          validationSchema={LoginSchema}
             initialValues={{
               username: "",
               password: "",
             }}
             onSubmit={handleSubmit}
           >
-            {({ isSubmitting, values }) => (
+            {({ isSubmitting, isValid, dirty, values }) => (
               <Form className="grid gap-y-1.5">
-                <pre>{JSON.stringify(values, null, 2)}</pre>
                 <Input
                   name="username"
                   label="Phone Number, username or email"
@@ -94,6 +95,7 @@ export default function Login() {
                 />
                 <button
                   type="submit"
+                  disabled={!isValid || !dirty || isSubmitting}
                   className="h-[30px] mt-1 rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
                 >
                   Log In
