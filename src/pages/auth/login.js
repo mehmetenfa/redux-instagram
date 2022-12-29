@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from "react";
-import Input from "../components/input";
+import Input from "../../components/input";
 import { AiFillFacebook } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { login } from "firebase.js";
