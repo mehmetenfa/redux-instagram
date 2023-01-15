@@ -36,10 +36,12 @@ export default function Login() {
   ];
 
   const handleSubmit = async (values, actions) => {
-    await login(values.username, values.password);
-    navigate(location.state?.return_url || "/", {
-      replace: true,
-    });
+    const response = await login(values.username, values.password);
+    if (response) {
+      navigate(location.state?.return_url || "/", {
+        replace: true,
+      });
+    }
   };
 
   return (
