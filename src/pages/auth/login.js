@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from "react";
 import Input from "../../components/input";
+import Button from "../../components/Button";
 import { AiFillFacebook } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { login } from "firebase.js";
@@ -86,13 +87,12 @@ export default function Login() {
                   label="Phone Number, username or email"
                 />
                 <Input type="password" name="password" label="Password" />
-                <button
+                <Button
                   type="submit"
                   disabled={!isValid || !dirty || isSubmitting}
-                  className="h-[30px] mt-1 rounded bg-brand font-medium text-white text-sm disabled:opacity-50"
                 >
                   Log In
-                </button>
+                </Button>
                 <div className="flex items-center my-2.5 mb-3.5">
                   <div className="h-px bg-gray-300 flex-1" />
                   <span className="px-4 text-[13px] text-gray-500 font-semibold">
