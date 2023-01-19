@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from "react";
 import Input from "../../components/input";
 import Button from "../../components/Button";
+import Separator from "components/Separator";
 import { AiFillFacebook } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { login } from "firebase.js";
@@ -93,13 +94,7 @@ export default function Login() {
                 >
                   Log In
                 </Button>
-                <div className="flex items-center my-2.5 mb-3.5">
-                  <div className="h-px bg-gray-300 flex-1" />
-                  <span className="px-4 text-[13px] text-gray-500 font-semibold">
-                    OR
-                  </span>
-                  <div className="h-px bg-gray-300 flex-1" />
-                </div>
+                <Separator />
                 <a
                   href="#"
                   className="flex justify-center mb-2.5 items-center gap-x-2 text-sm font-semibold text-facebook"
