@@ -23,13 +23,21 @@ export default function Register() {
   return (
     <div className="w-[350px] grid gap-y-3">
       <div className="bg-white border px-[40px] pt-10 pb-6">
-        <a href="#" className="flex justify-center mb-8">
+        <a href="#" className="flex justify-center mb-4">
           <img
             className="h-[51px]"
             src="https://www.instagram.com/static/images/web/logged_out_wordmark-2x.png/d2529dbef8ed.png"
             alt=""
           />
         </a>
+        <p className="text-[17px] font-semibold text-[#8e8e8e] text-center mb-6">
+          Sign up to see photos and videos from your friends.
+        </p>
+        <Button type=" ">
+          <AiFillFacebook size={20} />
+          Log in with Facebook
+        </Button>
+        <Separator />
         <Formik
           validationSchema={LoginSchema}
           initialValues={{
@@ -49,13 +57,6 @@ export default function Register() {
                 Log In
               </Button>
               <Separator />
-              <a
-                href="#"
-                className="flex justify-center mb-2.5 items-center gap-x-2 text-sm font-semibold text-facebook"
-              >
-                <AiFillFacebook size={20} />
-                Log in with Facebook
-              </a>
               <a
                 href="#"
                 className="text-xs flex items-center justify-center text-link"
