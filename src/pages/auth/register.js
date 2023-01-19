@@ -1,4 +1,3 @@
-import { useRef, useEffect, useState } from "react";
 import Input from "../../components/input";
 import Button from "../../components/Button";
 import Separator from "components/Separator";

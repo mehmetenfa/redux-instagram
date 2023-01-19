@@ -3,7 +3,7 @@ import Input from "../../components/input";
 import Button from "../../components/Button";
 import Separator from "components/Separator";
 import { AiFillFacebook } from "react-icons/ai";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, Link } from "react-router-dom";
 import { login } from "firebase.js";
 import { Formik, Form } from "formik";
 import { LoginSchema } from "validation";
@@ -115,9 +115,9 @@ export default function Login() {
 
         <div className="bg-white border p-4 text-sm text-center">
           Don't have an account?{" "}
-          <a href="#" className="font-semibold text-brand">
+          <Link to="/auth/register" className="font-semibold text-brand">
             Sign up
-          </a>
+          </Link>
         </div>
       </div>
     </div>
