@@ -41,6 +41,8 @@ export default function Register() {
         <Formik
           validationSchema={LoginSchema}
           initialValues={{
+            email: "",
+            full_name: "",
             username: "",
             password: "",
           }}
