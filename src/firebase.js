@@ -3,6 +3,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signOut,
+  createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
 import toast from "react-hot-toast";
@@ -27,9 +28,17 @@ onAuthStateChanged(auth, (user) => {
   
 });
 
-export const login = async (email, password) => {
+export const login = async ({ email, password, full_name, username }) => {
   try {
     const response = await signInWithEmailAndPassword(auth, email, password);
+  } catch (err) {
+    toast.error(err.code);
+  }
+};
+
+export const register = async (email, password) => {
+  try {
+    const response = await createUserWithEmailAndPassword(auth, email, password);
   } catch (err) {
     toast.error(err.code);
   }

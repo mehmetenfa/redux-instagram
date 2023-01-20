@@ -3,7 +3,7 @@ import Button from "../../components/Button";
 import Separator from "components/Separator";
 import { AiFillFacebook } from "react-icons/ai";
 import { useNavigate, useLocation, Link } from "react-router-dom";
-import { login } from "firebase.js";
+import { register } from "firebase.js";
 import { Formik, Form } from "formik";
 import { RegisterSchema } from "validation";
 
@@ -12,7 +12,7 @@ export default function Register() {
   const location = useLocation();
 
   const handleSubmit = async (values, actions) => {
-    const response = await login(values.username, values.password);
+    const response = await register(values);
     if (response) {
       navigate(location.state?.return_url || "/", {
         replace: true,
