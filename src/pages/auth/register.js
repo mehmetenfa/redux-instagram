@@ -5,7 +5,7 @@ import { AiFillFacebook } from "react-icons/ai";
 import { useNavigate, useLocation } from "react-router-dom";
 import { login } from "firebase.js";
 import { Formik, Form } from "formik";
-import { LoginSchema } from "validation";
+import { RegisterSchema } from "validation";
 
 export default function Register() {
   const navigate = useNavigate();
@@ -39,7 +39,7 @@ export default function Register() {
         </Button>
         <Separator />
         <Formik
-          validationSchema={LoginSchema}
+          validationSchema={RegisterSchema}
           initialValues={{
             email: "",
             full_name: "",
@@ -50,6 +50,8 @@ export default function Register() {
         >
           {({ isSubmitting, isValid, dirty, values }) => (
             <Form className="grid gap-y-1.5">
+              <Input name="email" label="Email" />
+              <Input name="full_name" label="Full Name" />
               <Input name="username" label="Phone Number, username or email" />
               <Input type="password" name="password" label="Password" />
               <Button
