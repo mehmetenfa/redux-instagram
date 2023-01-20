@@ -3,6 +3,7 @@ import {
   getAuth,
   onAuthStateChanged,
   signOut,
+  updateProfile,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
@@ -28,7 +29,7 @@ onAuthStateChanged(auth, (user) => {
   
 });
 
-export const login = async ({ email, password, full_name, username }) => {
+export const login = async (email, password) => {
   try {
     const response = await signInWithEmailAndPassword(auth, email, password);
   } catch (err) {
@@ -36,9 +37,13 @@ export const login = async ({ email, password, full_name, username }) => {
   }
 };
 
-export const register = async (email, password) => {
+export const register = async ({ email, password, full_name, username }) => {
   try {
     const response = await createUserWithEmailAndPassword(auth, email, password);
+    await updateProfile(auth.currentUser, {
+      displayName: full_name,
+      username: username
+    })
   } catch (err) {
     toast.error(err.code);
   }
