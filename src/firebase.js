@@ -7,6 +7,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
+import {getFirestore, doc, setDoc} from "firebase/firesestore"
 import toast from "react-hot-toast";
 import { userHandle } from "./utils";
 
@@ -23,6 +24,7 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth();
+const db = getFirestore(app)
 
 onAuthStateChanged(auth, (user) => {
     userHandle(user || false);
@@ -40,9 +42,18 @@ export const login = async (email, password) => {
 export const register = async ({ email, password, full_name, username }) => {
   try {
     const response = await createUserWithEmailAndPassword(auth, email, password);
+
+    // users koleksiyonuna ekle
+    await setDoc(doc(db, "users", response.users.uid)), {
+      full_name,
+      username,
+      followers: [],
+      following: [],
+      notifications: [],
+    }
+    
     await updateProfile(auth.currentUser, {
-      displayName: full_name,
-      username: username
+      displayName: full_name  
     })
   } catch (err) {
     toast.error(err.code);

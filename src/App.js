@@ -15,6 +15,8 @@ function App() {
     return <Loader />
   }
 
+  console.log(user.displayName);
+
   return (
     <>
       <Toaster position="top-right" />
