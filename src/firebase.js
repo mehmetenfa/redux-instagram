@@ -11,14 +11,13 @@ import {getFirestore, doc, setDoc} from "firebase/firesestore"
 import toast from "react-hot-toast";
 import { userHandle } from "./utils";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyCUGW21PawzVoy3W_jnn3dUFKPqS_MM-0k",
-  authDomain: "redux-instagram.firebaseapp.com",
-  projectId: "redux-instagram",
-  storageBucket: "redux-instagram.appspot.com",
-  messagingSenderId: "59243538153",
-  appId: "1:59243538153:web:c7fe1d05aced718962f278",
+  apiKey: process.env.REACT_APP_API_KEY,
+	authDomain: process.env.REACT_APP_AUTH_DOMAIN,
+	projectId: process.env.REACT_APP_PROJECT_ID,
+	storageBucket: process.env.REACT_APP_STORAGE_BUCKET,
+	messagingSenderId: process.env.REACT_APP_MESSAGING_SENDER_ID,
+	appId: process.env.REACT_APP_APP_ID
 };
 
 // Initialize Firebase
@@ -42,7 +41,7 @@ export const login = async (email, password) => {
 export const register = async ({ email, password, full_name, username }) => {
   try {
     const response = await createUserWithEmailAndPassword(auth, email, password);
-
+    
     // users koleksiyonuna ekle
     await setDoc(doc(db, "users", response.users.uid)), {
       full_name,
