@@ -7,7 +7,7 @@ import {
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
 } from "firebase/auth";
-import {getFirestore, doc, setDoc} from "firebase/firesestore"
+import {getFirestore, doc, setDoc} from "firebase/firestore"
 import toast from "react-hot-toast";
 import { userHandle } from "./utils";
 
