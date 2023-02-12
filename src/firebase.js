@@ -41,19 +41,11 @@ export const login = async (email, password) => {
 export const register = async ({ email, password, full_name, username }) => {
   try {
     const response = await createUserWithEmailAndPassword(auth, email, password);
-    
-    // users koleksiyonuna ekle
-    await setDoc(doc(db, "users", response.users.uid)), {
-      full_name,
-      username,
-      followers: [],
-      following: [],
-      notifications: [],
-    }
-    
     await updateProfile(auth.currentUser, {
-      displayName: full_name  
+      displayName: full_name,
+      username: username
     })
+    
   } catch (err) {
     toast.error(err.code);
   }
